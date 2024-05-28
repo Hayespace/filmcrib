@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>Login with Crypto Wallet</h1>
+    <button id="wallet-login">Login with MetaMask</button>
+
+    <script>
+        document.getElementById('wallet-login').onclick = async function() {
+            if (typeof window.ethereum !== 'undefined') {
+                const web3 = new Web3(window.ethereum);
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const accounts = await web3.eth.getAccounts();
+                const account = accounts[0];
+                const message = 'Sign this message to log in: ' + Math.random().toString(36).substring(7);
+                const signature = await web3.eth.personal.sign(message, account);
+
+                const response = await fetch('/wallet_login/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message, signature: signature, address: account })
+                });
+
+                const result = await response.json();
+                if (result.status === 'ok') {
+                    alert('Logged in as ' + result.address);
+                    window.location.href = '/';
+                } else {
+                    alert('Login failed');
+                }
+            } else {
+                alert('MetaMask is not installed');
+            }
+        }
+    </script>
+</body>
+</html>
