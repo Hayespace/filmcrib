@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <!-- Large Carousel for Featured Videos -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             {% for video in featured_videos %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="carousel-item carousel-height {% if forloop.first %}active{% endif %}">
                 {% if video.image %}
                 <img src="{{ video.image.url }}" class="d-block w-100" alt="{{ video.name }}">
                 {% else %}
@@ -32,23 +32,25 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid car-con">
     <!-- Category Rows -->
     {% for genre in genres %}
         {% if genre.videos.exists %}
-        <div class="row">
+        <div class="row mx-1 mt-4">
             <div class="col-md-12">
                 <h2>{{ genre.name }}</h2>
                 <div class="row category-row">
                     {% for video in genre.videos.all %}
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="{{ video.image.url }}" class="card-img-top" alt="{{ video.name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ video.name }}</h5>
-                                <p class="card-text">{{ video.description }}</p>
-                                <a href="{{ video.video_file.url }}" class="btn btn-primary">Watch Video</a>
+                    <div class="col-lg-3 col-md-6 col-sm-12 px-1 mb-4">
+                        <div class="card position-relative">
+                            <!-- Overlay with play button -->
+                            <div class="card-img-overlay d-flex align-items-center justify-content-center overlay">
+                                <a href="{{ video.video_file.url }}" class="play-icon" title="Watch Video">
+                                    <i class="fas fa-play-circle fa-4x"></i>
+                                </a>
                             </div>
+                            <!-- Image -->
+                            <img src="{{ video.image.url }}" class="card-img-top" alt="{{ video.name }}">
                         </div>
                     </div>
                     {% endfor %}

@@ -3,11 +3,61 @@ html {
 }
 
 body {
-    background: url('/media/bg.png')  center center fixed;
+    background: url('/media/bg.png') center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     background-color: black;
     color: whitesmoke;
-    
 }
 
+/* Custom CSS for card layout */
+.card {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow behind the card */
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgb(218, 10, 86); 
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.overlay {
+    z-index: 1;
+}
+
+.play-icon {
+    color: rgb(218, 10, 86);
+    transition: transform 0.3s ease;
+}
+
+.play-icon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+    color: antiquewhite;
+}
+
+/* Custom CSS to adjust carousel height */
+.carousel-height {
+    max-height: 50vh; /* Set the maximum height to 50% of viewport height */
+}
+
+.container {
+    max-width: 100%;
+}
