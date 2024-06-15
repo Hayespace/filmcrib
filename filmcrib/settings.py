@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hngx03f8!y^%7s=uj93!rzg#a0lcci@@5c^q*s9uj&bhnw43nc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-hayespace-filmcrib-t2qqc1dprbr.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['8000-hayespace-filmcrib-0kyoinubuia.ws-eu114.gitpod.io']
 
 
 # Application definition
@@ -90,7 +90,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'

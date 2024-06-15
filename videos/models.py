@@ -8,8 +8,8 @@ class Genre(models.Model):
         return self.name
 
 class Video(models.Model):
-    genre = models.ForeignKey('Genre', null=True, blank=True, on_delete=models.SET_NULL)
-    name = models.CharField(max_length=254)  # Reverted back to 'name'
+    genres = models.ManyToManyField('Genre', blank=True, related_name='videos')
+    name = models.CharField(max_length=254)
     description = models.TextField()
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -21,6 +21,7 @@ class Video(models.Model):
     producer = models.CharField(max_length=254, null=True, blank=True)
     cast = models.TextField(null=True, blank=True)
     awards = models.TextField(null=True, blank=True)
+    featured = models.BooleanField(default=False)  # New field
 
     def __str__(self):
-        return self.name 
+        return self.name

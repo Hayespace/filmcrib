@@ -4,7 +4,5 @@ from videos.models import Genre, Video
 
 def home(request):
     genres = Genre.objects.all()
-    videos = Video.objects.all()
-    return render(request, 'home/index.html', {'genres': genres, 'videos': videos})
-
-
+    featured_videos = Video.objects.filter(featured=True)
+    return render(request, 'home/index.html', {'genres': genres, 'featured_videos': featured_videos})
