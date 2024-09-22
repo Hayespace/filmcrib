@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hngx03f8!y^%7s=uj93!rzg#a0lcci@@5c^q*s9uj&bhnw43nc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-hayespace-filmcrib-0kyoinubuia.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['8000-hayespace-filmcrib-lrtfphrmrva.ws.codeinstitute-ide.net']
 
 
 # Application definition
